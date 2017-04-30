@@ -1,0 +1,25 @@
+<!--
+ - Created by chris.baldock on 22/4/17.
+ -->
+
+<aura:component description="PPR_CommunicationHistoryDisplay" implements="flexipage:availableForAllPageTypes, force:hasRecordId, force:hasSObjectName">
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="sObjectName" type="String" />
+
+    <!-- the below div tag is needed to override the background colour css -->
+    <div>
+        <lightning:card>
+            <aura:set attribute="title">Recent Communication</aura:set>
+            <aura:set attribute="footer" />
+            <aura:set attribute="actions">
+                <span class="slds-p-right--small">Page 1 out of 10</span>
+                <lightning:buttonIcon iconName="utility:chevronleft" variant="border" alternativeText="page left" size="medium"/>
+                <lightning:buttonIcon iconName="utility:chevronright" variant="border" alternativeText="page right" size="medium"/>
+                <lightning:buttonIcon iconName="utility:refresh" variant="border" alternativeText="refresh" size="medium" onclick="{!c.refreshChild}"/>
+            </aura:set>
+            <div class="slds-p-around--small">
+                <c:PPR_ActivityTimeline aura:id="activityTimeline" recordId="{!v.recordId}" sObjectName="{!v.sObjectName}"/>
+            </div>
+        </lightning:card>
+    </div>
+</aura:component>

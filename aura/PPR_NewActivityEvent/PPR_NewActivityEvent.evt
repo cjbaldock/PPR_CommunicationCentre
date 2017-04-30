@@ -1,0 +1,7 @@
+<!--
+ - Created by chris.baldock on 22/4/17.
+ -->
+
+<aura:event type="APPLICATION" description="PPR_NewActivityEvent">
+    <aura:attribute name="activityType" type="String"/>
+</aura:event>

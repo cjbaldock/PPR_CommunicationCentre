@@ -1,0 +1,17 @@
+<!--
+ - Created by chris.baldock on 22/4/17.
+ -->
+
+<aura:component description="PPR_CommunicationPublisherWrapper" implements="flexipage:availableForAllPageTypes, force:hasRecordId, force:hasSObjectName, force:lightningQuickAction">
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="sObjectName" type="String" />
+
+    <lightning:tabset variant="scoped">
+        <lightning:tab label="SMS">
+            <c:PPR_CommunicationPublisher_SMS recordId="{!v.recordId}" sObjectName="{!v.sObjectName}"/>
+        </lightning:tab>
+        <lightning:tab label="Email">
+            <c:PPR_CommunicationPublisher_Email recordId="{!v.recordId}" sObjectName="{!v.sObjectName}"/>
+        </lightning:tab>
+    </lightning:tabset>
+</aura:component>

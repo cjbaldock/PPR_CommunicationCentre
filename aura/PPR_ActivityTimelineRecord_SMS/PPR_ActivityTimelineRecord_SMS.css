@@ -1,0 +1,10 @@
+/**
+ * Created by chris.baldock on 22/4/17.
+ */
+.THIS .slds-media__figure {
+	z-index: 2;
+}
+.THIS .slds-timeline__media--sms:before {
+    background-color: #48c3cc;
+    z-index: 1;
+}

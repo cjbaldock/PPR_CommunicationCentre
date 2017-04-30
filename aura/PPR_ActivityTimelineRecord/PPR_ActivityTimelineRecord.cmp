@@ -1,0 +1,18 @@
+<!--
+ - Created by chris.baldock on 22/4/17.
+ -->
+
+<aura:component description="PPR_ActivityTimelineRecord">
+    <aura:attribute name="activityType" type="String" default="SMS" />
+    <aura:attribute name="activityDetail" type="PPR_ActivityTimeline_Model" /> <!-- update type to be wrapper class -->
+
+    <!-- notice how I've used an unbound expression (i.e. # vs. !) to improve performance. I can use this as I do not need two-way binding in this scenario -->
+    <aura:if isTrue="{!v.activityType == 'SMS'}">
+        <c:PPR_ActivityTimelineRecord_SMS activityDetail="{#v.activityDetail}"/>
+    </aura:if>
+
+    <aura:if isTrue="{!v.activityType == 'Email'}">
+        <c:PPR_ActivityTimelineRecord_Email activityDetail="{#v.activityDetail}"/>
+    </aura:if>
+
+</aura:component>

@@ -1,0 +1,29 @@
+<!--
+ - Created by chris.baldock on 22/4/17.
+ -->
+
+<aura:component description="PPR_ActivityTimeline" controller="PPR_ActivityTimeline_Controller">
+    <aura:attribute name="timeLineItems" type="PPR_ActivityTimeline_Model" />
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="sObjectName" type="String" />
+
+    <!-- Handler for OnLoad event -->
+    <aura:handler name="init" value="{!this}" action="{!c.getHistory}"/>
+
+    <!-- Handler for Record Update Event -->
+    <aura:handler event="c:PPR_NewActivityEvent" action="{!c.getHistory}"/>
+
+    <aura:method name="refresh" action="{!c.getHistory}" description="Method to allow parent components to trigger refresh" />
+
+    <!-- right now this places a spinnger on the entire page though ideally this should only apply to the component that is performing some work -->
+    <!--<lightning:spinner variant="brand" size="medium" aura:id="mySpinner"/>-->
+
+    <aura:iteration items="{!v.timeLineItems}" var="item">
+        <!-- need DIV here to fix lightning bug: https://salesforce.stackexchange.com/questions/77730/lightning-component-auraiteration-is-throwing-error-upon-rerendering -->
+        <!-- notice how I've used an unbound expression (i.e. # vs. !) to improve performance. I can use this as I do not need two-way binding in this scenario -->
+        <div>
+            <c:PPR_ActivityTimelineRecord activityType="{#item.ActivityTimelineType}" activityDetail="{#item}"/>
+        </div>
+    </aura:iteration>
+
+</aura:component>

@@ -1,0 +1,42 @@
+<!--
+ - Created by chris.baldock on 22/4/17.
+ -->
+
+<aura:component description="PPR_ActivityTimelineRecord_SMS">
+    <aura:attribute name="activityDetail" type="PPR_ActivityTimeline_Model" />
+    <!--
+    <aura:attribute name="subject" type="String"/>
+    <aura:attribute name="date" type="String"/>
+    <aura:attribute name="bodyText" type="String"/>
+    <aura:attribute name="contactName" type="String"/>
+    -->
+
+    <span class="slds-assistive-text">SMS</span>
+    <div class="slds-media">
+        <div class="slds-media__body">
+            <div class="slds-media slds-media--timeline slds-timeline__media--sms">
+
+                <div class="slds-media__figure slds-timeline__icon">
+                    <lightning:icon iconName="standard:post" size="small" class="slds-icon slds-icon--small slds-icon-standard-post"/>
+                </div>
+
+                <div class="slds-media__body">
+                    <h3 class="slds-truncate" title="SMS Subject"><a href="javascript:void(0);">{!v.activityDetail.Subject}</a></h3>
+                    <p class="slds-truncate" title="SMS Text">{!v.activityDetail.Detail}</p>
+                    <ul class="slds-list--horizontal slds-wrap">
+                        <li class="slds-m-right--large">
+                            <span class="slds-text-title">Name: </span>
+                            <span class="slds-text-body--small"><a href="javascript:void(0);">{!v.activityDetail.Recipients}</a></span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <div class="slds-media__figure slds-media__figure--reverse">
+            <div class="slds-timeline__actions">
+                <p class="slds-timeline__date">{!v.activityDetail.ShortDate}</p>
+            </div>
+        </div>
+    </div>
+</aura:component>

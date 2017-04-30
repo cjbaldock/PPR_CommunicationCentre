@@ -1,0 +1,24 @@
+<!--
+ - Created by chris.baldock on 22/4/17.
+ -->
+
+<aura:component description="PPR_CommunicationPublisher_Email" controller="PPR_ActivityTimeline_Controller">
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="sObjectName" type="String" />
+    <aura:attribute name="contactName" type="String"/>
+    <aura:attribute name="emailAddress" type="String" />
+    <aura:attribute name="emailText" type="String" />
+
+    <!-- Handler for OnLoad event -->
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
+
+    <aura:registerEvent name="newActivityEvent" type="c:PPR_NewActivityEvent"/>
+
+    <lightning:input name="Contact" label="Contact" type="search" value="{!v.contactName}" />
+    <lightning:input name="Email" label="Email" type="email" value="{!v.emailAddress}" />
+    <lightning:textarea name="EmailTextArea" label="Email Text" value="{!v.emailText}"  maxlength="300" />
+    <br />
+    <lightning:layout horizontalAlign="end">
+        <lightning:button name="Send" label="Send" variant="brand" onclick="{!c.sendEmail}"/>
+    </lightning:layout>
+</aura:component>
